@@ -14,16 +14,14 @@ import java.util.ArrayList;
 public class Universo {
     private String codigo;
     private int edad;
-    private int peso;
     ArrayList <mundo> mun=new ArrayList();
 
     public Universo() {
     }
 
-    public Universo(String codigo, int edad, int peso) {
+    public Universo(String codigo, int edad) {
         this.codigo = codigo;
         this.edad = edad;
-        this.peso = peso;
     }
 
     public String getCodigo() {
@@ -42,13 +40,6 @@ public class Universo {
         this.edad = edad;
     }
 
-    public int getPeso() {
-        return peso;
-    }
-
-    public void setPeso(int peso) {
-        this.peso = peso;
-    }
 
     public ArrayList<mundo> getMun() {
         return mun;

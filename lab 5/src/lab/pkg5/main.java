@@ -6,6 +6,8 @@
 package lab.pkg5;
 
 import javax.swing.DefaultListModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -51,6 +53,13 @@ public class main extends javax.swing.JFrame {
         tf_pesoc = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        jd_universo = new javax.swing.JDialog();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        tf_codigouni = new javax.swing.JTextField();
+        tf_edaduni = new javax.swing.JTextField();
+        jButton8 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -207,6 +216,61 @@ public class main extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel12.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel12.setText("nuevo universo");
+
+        jLabel13.setText("codigo de universo");
+
+        jLabel14.setText("edad de universo");
+
+        jButton8.setText("agregar");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_universoLayout = new javax.swing.GroupLayout(jd_universo.getContentPane());
+        jd_universo.getContentPane().setLayout(jd_universoLayout);
+        jd_universoLayout.setHorizontalGroup(
+            jd_universoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_universoLayout.createSequentialGroup()
+                .addGroup(jd_universoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_universoLayout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(jLabel12))
+                    .addGroup(jd_universoLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jd_universoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(50, 50, 50)
+                        .addGroup(jd_universoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_codigouni)
+                            .addComponent(tf_edaduni, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)))
+                    .addGroup(jd_universoLayout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addComponent(jButton8)))
+                .addContainerGap(57, Short.MAX_VALUE))
+        );
+        jd_universoLayout.setVerticalGroup(
+            jd_universoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_universoLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
+                .addGroup(jd_universoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(tf_codigouni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(jd_universoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(tf_edaduni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jButton8)
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Agregar mundo disco");
@@ -241,6 +305,11 @@ public class main extends javax.swing.JFrame {
         jButton6.setText("agregar al arbol");
 
         jButton7.setText("Agregar universo");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -343,6 +412,28 @@ public class main extends javax.swing.JFrame {
         jd_criatura.dispose();
     }//GEN-LAST:event_jButton5MouseClicked
 
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        if (jButton7.isEnabled()) {
+        jd_universo.setModal(true);
+        jd_universo.pack();
+        jd_universo.setLocationRelativeTo(this);
+        jd_universo.setVisible(true);}
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        // TODO add your handling code here:
+        String codigo=tf_codigouni.getText();
+        int edad=Integer.parseInt(tf_edaduni.getText());
+        DefaultTreeModel m = (DefaultTreeModel) jt_universo.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot(); 
+        DefaultMutableTreeNode nodo_universo= (new DefaultMutableTreeNode(new Universo(codigo,edad)));
+        raiz.add(nodo_universo);
+        m.reload();
+        jd_universo.dispose();
+        jButton7.setEnabled(false);
+    }//GEN-LAST:event_jButton8MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -386,9 +477,13 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -402,9 +497,12 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JDialog jd_criatura;
     private javax.swing.JDialog jd_mundo;
+    private javax.swing.JDialog jd_universo;
     private javax.swing.JList<String> jl_criatura;
     private javax.swing.JList<String> jl_mundos;
     private javax.swing.JTree jt_universo;
+    private javax.swing.JTextField tf_codigouni;
+    private javax.swing.JTextField tf_edaduni;
     private javax.swing.JTextField tf_energia;
     private javax.swing.JTextField tf_lifespan;
     private javax.swing.JTextField tf_nraza;
